@@ -1,24 +1,47 @@
-.App {
+.hide {
+  display: none;
+}
+
+.contacts-list {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+.contact-list-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  border: 1px solid #000;
+  margin-bottom: 10px;
+}
+
+.contact-avatar {
+  width: 60px;
+  height: 60px;
+  margin-right: 10px;
+}
+
+.contact-details {
+  overflow: hidden;
+  border-left: 1px solid #eee;
+  flex: 1;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+}
+
+.contact-details p{
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.contact-remove {
+  padding-left: 10px;
+  width: 32px;
+  height: 32px;
   text-align: center;
-}
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
-
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
-}
-
-.App-intro {
-  font-size: large;
-}
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  vertical-align: middle;
+  align-self: center;
+  cursor:pointer;
 }
