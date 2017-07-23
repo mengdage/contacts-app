@@ -30,6 +30,18 @@ class App extends Component {
     });
   }
 
+  createContact(contact) {
+    ContactsAPI.create(contact)
+      .then(res=>this.setState({
+        contacts: this.state.contacts.concate([res])
+      }));
+  }
+
+  removeContact(contact) {
+    ContactsAPI.remove(contact)
+      .then(res => console.log(res));
+  }
+
   render() {
     const query = this.state.query;
     return (
@@ -37,14 +49,26 @@ class App extends Component {
         <Route exact path="/" render={()=>(
           <div>
             <div className="contacts-app-head">
-              <ContactsSearch query={query} searchHandler={(keyword) => this.searchContacts(keyword)}/>
+              <ContactsSearch
+                query={query}
+                searchHandler={(keyword) => this.searchContacts(keyword)}/>
               <Link to="/create" className="add-contact">Add</Link>
             </div>
-            <ContactsList query={query} contacts={this.state.contacts} />
+            <ContactsList
+              removeContact={(c)=>this.removeContact(c)}
+              query={query}
+              contacts={this.state.contacts} />
           </div>
         ) } />
 
-        <Route path="/create" component={ CreateContact } />
+        <Route path="/create" render = {
+          ({history}) => (
+            <CreateContact createContact={(contact)=>{
+              this.createContact(contact);
+              history.push('/');
+            }}/>
+          )
+        } />
 
       </div>
     );

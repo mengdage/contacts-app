@@ -45,3 +45,30 @@
   align-self: center;
   cursor:pointer;
 }
+
+/* create contact */
+
+.create-contact-form {
+  max-width: 320px;
+  margin:  0 auto;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+}
+
+.create-contact-avatar-input {
+  height: 60px;
+  width: 60px;
+  border: 1px solid #000;
+  border-radius: 50%;
+  background-image: url(./icons/person.svg);
+  background-color: #fff;
+  background-position: center;
+  background-size: 32px 32px;
+  background-repeat: no-repeat;
+}
+
+.create-contact-details input {
+  display: block;
+
+}
