@@ -29,3 +29,41 @@ export const create = (body) =>
     },
     body: JSON.stringify(body)
   }).then(res => res.json())
+
+export const getAllLocal = () => {
+  const promise = new Promise(resolve =>{
+    let contacts = localStorage.contacts || '[]';
+    resolve(JSON.parse(contacts));
+  });
+  return promise;
+}
+export const removeLocal = (contact) => {
+  const promise = new Promise(resolve => {
+    let contacts = JSON.parse(localStorage.contacts || '[]');
+    if(contacts) {
+      contacts = contacts.filter(c=>c.id!==contact.id);
+      localStorage.contacts = JSON.stringify(contacts);
+    }
+    resolve(contact);
+  });
+  return promise;
+}
+export const createLocal = (body) => {
+  const promise = new Promise(resolve => {
+    const contacts = JSON.parse(localStorage.contacts || '[]');
+    let newContact={};
+    if(contacts) {
+      newContact = {
+        id: Math.random().toString(36).substr(-8),
+        name: body.name,
+        avatarURL: body.avatarURL,
+        email: body.email
+      };
+
+      contacts.push(newContact);
+      localStorage.contacts = JSON.stringify(contacts);
+    }
+    resolve(newContact);
+  });
+  return promise;
+}

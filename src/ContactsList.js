@@ -29,7 +29,7 @@ class ContactsList extends Component {
 
     return(
       <ol className="contacts-list">
-        {contactItems}
+        {contactItems.length>0? contactItems : <p>No contacts available</p>}
       </ol>
     );
   }

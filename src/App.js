@@ -18,7 +18,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    ContactsAPI.getAll()
+    ContactsAPI.getAllLocal()
       .then(data => this.setState({
         contacts: data
       }));
@@ -31,7 +31,7 @@ class App extends Component {
   }
 
   createContact(contact) {
-    ContactsAPI.create(contact)
+    ContactsAPI.createLocal(contact)
       .then(res=>this.setState({
         contacts: this.state.contacts.concat([res])
       }));
@@ -39,7 +39,7 @@ class App extends Component {
 
   removeContact(contact) {
     const id = contact.id;
-    ContactsAPI.remove(contact);
+    ContactsAPI.removeLocal(contact);
     this.setState({
       contacts: this.state.contacts.filter(c=>c.id!==id)
     });
