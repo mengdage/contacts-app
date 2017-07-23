@@ -33,13 +33,16 @@ class App extends Component {
   createContact(contact) {
     ContactsAPI.create(contact)
       .then(res=>this.setState({
-        contacts: this.state.contacts.concate([res])
+        contacts: this.state.contacts.concat([res])
       }));
   }
 
   removeContact(contact) {
-    ContactsAPI.remove(contact)
-      .then(res => console.log(res));
+    const id = contact.id;
+    ContactsAPI.remove(contact);
+    this.setState({
+      contacts: this.state.contacts.filter(c=>c.id!==id)
+    });
   }
 
   render() {

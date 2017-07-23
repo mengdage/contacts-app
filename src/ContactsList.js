@@ -22,10 +22,11 @@ class ContactsList extends Component {
           <p>{contact.name}</p>
           <p>{contact.email}</p>
         </div>
-        <div className="contact-remove">X</div>
+        <div onClick={()=>this.props.removeContact(contact)}
+        className="contact-remove">X</div>
       </li>
     ));
-    
+
     return(
       <ol className="contacts-list">
         {contactItems}
